@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ESII2025d2.Models;
 
@@ -19,6 +20,7 @@ public partial class Cliente
 
     public virtual ICollection<PropostaTrabalho> PropostaTrabalhos { get; set; } = new List<PropostaTrabalho>();
 
+    [JsonIgnore]
     [ForeignKey("idutilizador")]
-    public virtual Utilizador idutilizadorNavigation { get; set; } = null!;
+    public virtual Utilizador? idutilizadorNavigation { get; set; }
 }

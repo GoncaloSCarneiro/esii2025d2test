@@ -31,5 +31,5 @@ public partial class Talento
     public virtual CategoriaTalento? codcategoriatalentoNavigation { get; set; }
 
     [ForeignKey("idutilizador")]
-    public virtual Utilizador idutilizadorNavigation { get; set; } = null!;
+    public virtual Utilizador? idutilizadorNavigation { get; set; }
 }

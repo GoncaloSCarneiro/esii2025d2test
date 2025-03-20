@@ -13,7 +13,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<CategoriaTalento> CategoriasTalento { get; set; }
     
     public DbSet<Experiencia> Experiencias { get; set; }
-    public DbSet<PropostaTrabalho> PropostasTrabalho { get; set; }
+    public DbSet<PropostaTrabalho> PropostaTrabalhos { get; set; }
     public DbSet<Skill> Skills { get; set; }
     
     public DbSet<Talento> Talentos { get; set; }

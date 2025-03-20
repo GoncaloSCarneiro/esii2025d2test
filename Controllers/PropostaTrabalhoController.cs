@@ -21,7 +21,7 @@ public class PropostaTrabalhoController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PropostaTrabalho>>> GetPropostaTrabalho()
     {
-        return await _context.PropostasTrabalho.ToListAsync();
+        return await _context.PropostaTrabalhos.ToListAsync();
     }
     
 }

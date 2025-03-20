@@ -92,19 +92,6 @@ public class UtilizadorController : ControllerBase
         {
             return NotFound();
         }
-        
-        var talento = await _context.Talentos.FirstOrDefaultAsync(t => t.idutilizador == id);
-        if (talento != null)
-        {
-            _context.Talentos.Remove(talento); // Remove o talento associado
-        }
-
-        // Se houver um cliente associado, também remove
-        var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.idutilizador == id);
-        if (cliente != null)
-        {
-            _context.Clientes.Remove(cliente); // Remove o cliente associado
-        }
 
         _context.Utilizadores.Remove(utilizador);
         await _context.SaveChangesAsync();

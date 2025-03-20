@@ -76,14 +76,28 @@ namespace ESII2025d2.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Talento/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTalento(int id)
         {
-            var talento = await _context.Talentos.FindAsync(id);
+            var talento = await _context.Talentos
+                .Include(t => t.Experiencia) // Incluir experiências associadas
+                .Include(t => t.TalentoSkills) // Incluir talentos skills associadas
+                .FirstOrDefaultAsync(t => t.id == id);
+
             if (talento == null)
             {
                 return NotFound();
+            }
+
+            // Remover registros dependentes primeiro
+            if (talento.Experiencia != null && talento.Experiencia.Any())
+            {
+                _context.Experiencias.RemoveRange(talento.Experiencia);
+            }
+
+            if (talento.TalentoSkills != null && talento.TalentoSkills.Any())
+            {
+                _context.TalentoSkills.RemoveRange(talento.TalentoSkills);
             }
 
             _context.Talentos.Remove(talento);
@@ -91,6 +105,7 @@ namespace ESII2025d2.Controllers
 
             return NoContent();
         }
+
 
         private bool TalentoExists(int id)
         {
