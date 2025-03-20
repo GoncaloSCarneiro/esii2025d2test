@@ -26,6 +26,6 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         
-        // Configurações adicionais do modelo podem ser adicionadas aqui
+
     }
 }
