@@ -21,7 +21,7 @@ public partial class esii2025d2Context : DbContext
 
     public virtual DbSet<Cliente> Clientes { get; set; }
 
-    public virtual DbSet<Experiencium> Experiencia { get; set; }
+    public virtual DbSet<Experiencia> Experiencia { get; set; }
 
     public virtual DbSet<PropostaTrabalho> PropostaTrabalhos { get; set; }
 
@@ -65,7 +65,7 @@ public partial class esii2025d2Context : DbContext
                 .HasConstraintName("cliente_idutilizador_fkey");
         });
 
-        modelBuilder.Entity<Experiencium>(entity =>
+        modelBuilder.Entity<Experiencia>(entity =>
         {
             entity.HasKey(e => e.id).HasName("experiencia_pkey");
 

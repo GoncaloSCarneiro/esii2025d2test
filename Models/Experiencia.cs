@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ESII2025d2.Models;
 
-public partial class Experiencium
+[Table("Experiencia")]
+public partial class Experiencia
 {
+    [Key]
     public int id { get; set; }
 
     public string titulo { get; set; } = null!;
@@ -17,5 +21,6 @@ public partial class Experiencium
 
     public int idtalento { get; set; }
 
+    [ForeignKey("idtalento")]
     public virtual Talento idtalentoNavigation { get; set; } = null!;
 }
