@@ -1,4 +1,6 @@
 @page "/login"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
 @inject NavigationManager Navigation
 
@@ -11,11 +13,12 @@
     <p></p>
     <input type="password" id="password" @bind="Password" placeholder="Palavra-passe" />
     <p></p>
-    <input type="button" id="login" @onclick="Loggedin" value="Iniciar Sessão" class="btn-login" />
+    <a id="login" class="btn btn-secondary" href="/">Iniciar Sessão</a>
     <p></p>
     <hr class="divider"/>
     <p></p>
-    <input type="button" id="register" @onclick="createAccount" value="Criar nova conta" class="btn-register" />
+    <a id="register" class="btn btn-secondary register" href="/register">Criar Nova Conta</a>
+    
 </div>
 
 @code {
@@ -23,14 +26,5 @@
     private string Email { get; set; } = "";
     private string Password { get; set; } = "";
 
-    private void Loggedin()
-    {
-        Console.WriteLine("Login clicado");
-    }
-
-    private void createAccount()
-    {
-        Console.WriteLine("Registo iniciado");
-        Navigation.NavigateTo("/register");
-    }
+    
 }
